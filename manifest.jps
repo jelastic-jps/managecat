@@ -1,0 +1,115 @@
+{
+    "jpsType": "update",
+	"application": {
+		"logo": "https://download.jelastic.com/public.php?service=files&t=a2fa5a95c8c07105e81132d7b6f780d6&download",
+		"onUninstall": {
+			"call": "removeManageCat"
+		},
+		"settings": {
+			"fields": [{
+					"default": "${user.email}",
+					"name": "email",
+					"caption": "Email",
+					"vtype": "email",
+					"type": "string",
+					"required": true
+				}, {
+					"name": "password",
+					"inputType": "password",
+					"caption": "Password",
+					"type": "string",
+					"required": true
+				}, {
+					"name": "fName",
+					"caption": "First Name",
+					"type": "string",
+					"required": false,
+					"regex" : "^[a-zA-Z\\s]{0,60}$",
+					"regexText" : "Only latin characters, whitespaces and length no more than 60 symbols."
+				}, {
+					"name": "lName",
+					"caption": "Last Name",
+					"type": "string",
+					"required": false,
+					"regex" : "^[a-zA-Z\\s]{0,60}$",
+					"regexText" : "Only latin characters, whitespaces and length no more than 60 symbols."
+				}
+			]
+		},
+		"procedures": [{
+				"id": "update_catalina_properties",
+				"onCall": [{
+						"executeScript": {
+							"description": "Detect archive and deploy",
+							"type": "js",
+							"script": "https://download.jelastic.com/public.php?service=files&t=c9d4d437426d15e85ac3f58bb52aaabe&download"
+						}
+					}, {
+						"executeShellCommands": [{
+								"commands": ["wget -q \"https://download.jelastic.com/public.php?service=files&t=aa614ed71c9b82dc53a978d3ad6a43b2&download\"  -O \"/tmp/mcat_installer\"", "bash /tmp/mcat_installer ${license.key}"],
+								"nodeMission": "cp"
+							}
+						]
+					}, {
+						"executeScript": {
+							"type": "js",
+							"script": "https://download.jelastic.com/public.php?service=files&t=1348e056b4e440d5051aea308d93fddf&download"
+						}
+					}
+				]
+			}, {
+				"id": "restartApp",
+				"onCall": [{
+						"restartNodes": {
+							"nodeMission": "cp"
+						}
+					}
+				]
+			}, {
+				"id": "removeManageCat",
+				"onCall": [{
+						"executeShellCommands": [{
+								"commands": ["[ -f /opt/tomcat/conf/catalina.properties ] && sed -i \"/com.managecat/d\"  /opt/tomcat/conf/catalina.properties 2>>/dev/null 1>>/dev/null", "if [ -d /opt/tomcat8 ]; then [ -f /opt/tomcat8/conf/catalina.properties ] && sed -i \"/com.managecat/d\" /opt/tomcat8/conf/catalina.properties; fi"],
+								"nodeMission": "cp",
+								"user": "root"
+							}
+						]
+					}
+				]
+			}, {
+				"id": "replace",
+				"onCall": [{
+						"replaceInFile": [{
+								"nodeId": "${this.nodeid}",
+								"replacements": [{
+										"replacement": "${this.replacement}",
+										"pattern": "${this.pattern}"
+									}
+								],
+								"path": "${this.path}"
+							}
+						]
+					}
+				]
+			}
+		],
+		"homepage": "http://www.managecat.com/",
+		"version": "1.0.0",
+		"targetNodes": {
+			"nodeType": ["tomcat7", "tomcat8", "tomcat6", "tomee"]
+		},
+		"description": "Managecat has all the tools you need to manage, monitor and troubleshoot your Apache Tomcat instances in one view.",
+		"name": "ManageCat",
+		"categories": ["apps/others", "apps/management-and-monitoring"],
+		"license": {
+			"terms": "I agree with <a href='https://saas.managecat.com/freetrial/privacy' target='_blank'><u>terms of service<\/u><\/a>",
+			"url": "http://7f0a21d8a92c209144be640de301ba79.app.jelastic.com/ManageCat"
+		},
+		"success": "Hello ${settings.fName} <\/br><\/br>Below you will find your ManageCat SaaS platform link, username.<\/br><\/br> <table style='font-size:13px; border: none;'><tr><td> ManageCat URL:<\/td><td style='padding-left: 10px;'><a href='https://saas.managecat.com' target='_blank'>https://saas.managecat.com<\/a><\/td><\/tr>  <tr><td>User name:<\/td><td style='padding-left: 10px;'>${settings.email}<\/td><\/tr><\/table><\/br>",
+		"onInstall": [{
+				"call": ["update_catalina_properties", "restartApp"]
+			}
+		]
+	},
+	"jpsVersion": "0.4"
+}
