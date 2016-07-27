@@ -1,7 +1,7 @@
 {
     "jpsType": "update",
 	"application": {
-		"logo": "https://download.jelastic.com/public.php?service=files&t=a2fa5a95c8c07105e81132d7b6f780d6&download",
+		"logo": "https://github.com/jelastic-jps/managecat/raw/master/images/manageCat.png",
 		"onUninstall": {
 			"call": "removeManageCat"
 		},
@@ -42,18 +42,18 @@
 						"executeScript": {
 							"description": "Detect archive and deploy",
 							"type": "js",
-							"script": "https://download.jelastic.com/public.php?service=files&t=c9d4d437426d15e85ac3f58bb52aaabe&download"
+							"script": "https://github.com/jelastic-jps/managecat/raw/master/scripts/ArchiveDetector.js"
 						}
 					}, {
 						"executeShellCommands": [{
-								"commands": ["wget -q \"https://download.jelastic.com/public.php?service=files&t=aa614ed71c9b82dc53a978d3ad6a43b2&download\"  -O \"/tmp/mcat_installer\"", "bash /tmp/mcat_installer ${license.key}"],
+								"commands": ["wget -q \"https://github.com/jelastic-jps/managecat/raw/master/scripts/mcat_installer.sh\"  -O \"/tmp/mcat_installer\"", "bash /tmp/mcat_installer ${license.key}"],
 								"nodeMission": "cp"
 							}
 						]
 					}, {
 						"executeScript": {
 							"type": "js",
-							"script": "https://download.jelastic.com/public.php?service=files&t=1348e056b4e440d5051aea308d93fddf&download"
+							"script": "https://github.com/jelastic-jps/managecat/raw/master/scripts/ReplaceServerName.js"
 						}
 					}
 				]
@@ -96,7 +96,7 @@
 		"homepage": "http://www.managecat.com/",
 		"version": "1.0.0",
 		"targetNodes": {
-			"nodeType": ["tomcat7", "tomcat8", "tomcat6", "tomee"]
+			"nodeType": ["tomcat8", "tomcat7", "tomcat6", "tomee"]
 		},
 		"description": "Managecat has all the tools you need to manage, monitor and troubleshoot your Apache Tomcat instances in one view.",
 		"name": "ManageCat",
