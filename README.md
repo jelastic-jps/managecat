@@ -16,44 +16,39 @@ Before ManageCat, there was no one platform solution to manage, monitor and Trou
 ManageCat has all the features to:
 
 1. Manage
-With ManageCat, you can manage all aspects of the Apache Tomcat:
-
-- Tomcat Configuration Files
-- Tomcat UserDatabase Realms
-- Multiple Server Deployment
-- Clustered Base Application Deployment
-- Web Application Management
-- Integration with JMX Server
-- Application Datasources
-- Create JDBC DataSources
-- Tomcat File System
-- JVM Startup Parameters and Environment Variables
-
-2. Monitor
-With ManageCat, you can monitor all aspects of the Apache Tomcat.
-
-- Real Time Server Monitoring
-- Live Charts
-- Server Metrics
-- Dashboards
-- Server Status Information
-- Tomcat Internal Components
-- Web Application Monitoring
-- JNDI Context Monitoring
-
-3. TroubleShoot
-With ManageCat, you can troubleshoot the problems easily when they occur in the Apache Tomcat.
-
-- Find Leaks
-- Platform MBeans
-- View Tomcat Runtime Threads
-- View Tomcat Logs
-- View System Logs
-- View Application Logs
-- Update Logger Levels
-- Metric Events and Alerts
-- Application ClassLoaders
-- Application Datasources
+   With ManageCat, you can manage all aspects of the Apache Tomcat:
+   - Tomcat Configuration Files
+   - Tomcat UserDatabase Realms
+   - Multiple Server Deployment
+   - Clustered Base Application Deployment
+   - Web Application Management
+   - Integration with JMX Server
+   - Application Datasources
+   - Create JDBC DataSources
+   - Tomcat File System
+   - JVM Startup Parameters and Environment Variables
+2. Monitor<br/>
+With ManageCat, you can monitor all aspects of the Apache Tomcat:
+   - Real Time Server Monitoring
+   - Live Charts
+   - Server Metrics
+   - Dashboards
+   - Server Status Information
+   - Tomcat Internal Components
+   - Web Application Monitoring
+   - JNDI Context Monitoring
+3. TroubleShoot<br/>
+With ManageCat, you can troubleshoot the problems easily when they occur in the Apache Tomcat:
+   - Find Leaks
+   - Platform MBeans
+   - View Tomcat Runtime Threads
+   - View Tomcat Logs
+   - View System Logs
+   - View Application Logs
+   - Update Logger Levels
+   - Metric Events and Alerts
+   - Application ClassLoaders
+   - Application Datasources
 
 ### Deployment
 
