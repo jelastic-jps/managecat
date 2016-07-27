@@ -96,7 +96,7 @@
 		"homepage": "http://www.managecat.com/",
 		"version": "1.0.0",
 		"targetNodes": {
-			"nodeType": ["tomcat85", "tomcat8", "tomcat7", "tomcat6", "tomee"]
+			"nodeType": ["tomcat8", "tomcat7", "tomcat6", "tomee"]
 		},
 		"description": "Managecat has all the tools you need to manage, monitor and troubleshoot your Apache Tomcat instances in one view.",
 		"name": "ManageCat",
