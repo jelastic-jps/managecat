@@ -36,7 +36,7 @@ while(iterator.hasNext()) {
 
 lastCoNode = aComputeNodes[aComputeNodes.length -1].id;
 
-if ( nodeTypeT == "tomcat7" ||  nodeTypeT == "tomcat6" || nodeTypeT == "tomee" ) {
+if (nodeTypeT == "tomcat" || nodeTypeT == "tomcat7" ||  nodeTypeT == "tomcat6" || nodeTypeT == "tomee" ) {
    catalinaPath = "/opt/tomcat/conf/catalina.properties";
 }
 
