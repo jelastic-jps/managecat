@@ -17,6 +17,7 @@
 					"name": "password",
 					"inputType": "password",
 					"caption": "Password",
+					"regex": "^[a-zA-Z0-9-]+$",
 					"type": "string",
 					"required": true
 				}, {
